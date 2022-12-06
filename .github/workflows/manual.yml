@@ -33,5 +33,5 @@ jobs:
       uses: actions/checkout@v2.1.0
 
     - name: Idenfity updated apps
-      if: ${{ github.event_name != 'workflow_dispatch' }}
+      if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.name == 'false' }}
       uses: trilom/file-changes-action@v1.2.4
