@@ -28,3 +28,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
+      
+    - name: Checkout Repo
+      uses: actions/checkout@v2.1.0
+
+    - name: Idenfity updated apps
+      if: ${{ !(github.event.inputs.name == 'true') || (github.event_name != 'workflow_dispatch') }}
+      uses: trilom/file-changes-action@v1.2.4
